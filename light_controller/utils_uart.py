@@ -3,7 +3,7 @@ from typing import List
 import numpy as np
 from numpy import ndarray
 
-from Live_app.UART.transformations import dec_to_hex, declist_to_binlist, bin_to_hex
+from .transformations import dec_to_hex, declist_to_binlist, bin_to_hex
 
 
 def split(word: str) -> List[str]:

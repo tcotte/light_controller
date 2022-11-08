@@ -4,8 +4,8 @@ from typing import List
 import serial
 from serial import SerialException
 
-from Live_app.UART.transformations import declist_to_binlist, bin_to_hex
-from Live_app.UART.utils_uart import split, compute_checksum, compute_command
+from .transformations import declist_to_binlist, bin_to_hex
+from .utils_uart import split, compute_checksum, compute_command
 
 
 class LightManager(serial.Serial):
@@ -28,7 +28,7 @@ class LightManager(serial.Serial):
         Steady mode on all the channels -> command Hx.1 for all channels named x
         8 is the parameter of the mode
         """
-        for i in range(1, 9):
+        for i in self.list_channels:
             chain = "$8" + str(i) + "000"
             chain_list = split(chain)
             list_bin = declist_to_binlist(chain_list)
